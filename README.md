@@ -23,7 +23,7 @@ def compute_battery_health(present_capacity, rated_capacity):
   }
   return health_report
 
-# Example usage
+
 battery_data = [
     {"present_capacity": 105, "rated_capacity": 120},
     {"present_capacity": 90, "rated_capacity": 120},
