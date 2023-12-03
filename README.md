@@ -1,54 +1,35 @@
-# Classify battery health
+def compute_battery_health(present_capacity,rated_capacity):
+    health_categories={
+        "healthy":0'
+        "replace":0,
+        "failed":0,
+    }
+#calculate SOH percentage
+    soh_percentage=100*present_capacity/rated_capacity
+#classify battery based on SOH
+    if soh_percentage>80:
+       health_categories["healthy"]+=1
+    elif soh_percentage>62:
+          health_categories["replace"]+=1
+    else:
+          health_categories["failed"]+=1
+  #create and return the health report
+    health_report={
+           "soh percentage":soh_percentage,
+           "classification":health_categories,
+           }
+    return health_report
 
-This assignment consists of two parts:
-
-1. Computing the state-of-health (SoH) of a battery
-2. Classifying batteries as Healthy, Replace or Failed
-
-## Computing health
-
-As batteries age, they lose their capacity to store charge.
-
-The state-of-health (SoH) of a battery compares a used battery and a fresh battery. It is a measure of aging, expressed as a percentage:
-
-`SoH% = 100 * present_capacity / rated_capacity`
-
-`present_capacity` =  The charge available in the battery, after a full charge.
-`rated_capacity` = The rated capacity of a new battery.
-
-For example, the rated capacity of a battery is `120 Ah`. It now gives only `105 Ah` after charging - that is its present capacity. Then, its SoH is calculated as:
-
-`SoH% = 100 * 105 / 120 = 87.5%`
-
-## Classifying batteries by SoH
-
-Input is the present capacity of a bunch of batteries. Assume all of them have a rated capacity of 120 Ah.
-
-You need to count how many are `healthy`, how many can `exchange`, and how many have already `failed`, as per the criteria below.
-
-Batteries are classified by SoH:
-
-- SoH more than `80%`, up to `100%`: classified as `healthy`
-- SoH between `80%` and `62%`: classified as `exchange`
-- SoH below `62%`: classified as `failed`
-
-The code needs to:
-1. Convert present capacity to SoH
-1. Classify using the above ranges
-1. Count the number of batteries falling under each classification.
-
-The code in this repository already has a function to do this. However, this function is not yet implemented.
-
-There is also a test function in the code.
-The asserts express what's needed from the code. Do not change or remove the asserts.
-Feel free to add more asserts, though.
-
-Of course, the function isn't implemented yet, and returns wrong values. Hence the condition in the assert fails and it aborts the program.
-
-Implement the function to count correctly and pass the test.
-
-## Evaluation criteria
-
-- Readability of variable names, code-flow, usage of comments only when necessary
-- Improvements to existing code and tests
-- Precision: adding new tests (such as boundary conditions)
+    battery_data=[
+    {"present_capacity":105,"rated_capacity":120},
+    {"present_capacity":90,"rated_capacity":120},
+    {"present_capacity":75,"rated_capacity":120},
+    {"present_capacity":50,"rated_capacity":120},
+    }
+    for battery in battery_data:
+        health_report=compute_battery_health(battery["present_capacity"],battery["rated_capacity"])
+        print(f"\nBattery soh:{health_report['soh percentage']:2f}%")
+        print(f"classification:")
+        for category,count in health_report["classsification"].items():
+            print(f"\t{category}:{count}")
+    
