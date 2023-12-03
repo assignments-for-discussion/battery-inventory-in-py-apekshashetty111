@@ -20,13 +20,13 @@ def compute_battery_health(present_capacity,rated_capacity):
            }
     return health_report
 
-    battery_data=[
+battery_data=[
     {"present_capacity":105,"rated_capacity":120},
     {"present_capacity":90,"rated_capacity":120},
     {"present_capacity":75,"rated_capacity":120},
     {"present_capacity":50,"rated_capacity":120},
     ]
-    for battery in battery_data:
+for battery in battery_data:
         health_report=compute_battery_health(battery["present_capacity"],battery["rated_capacity"])
         print(f"\nBattery soh:{health_report['soh percentage']:2f}%")
         print(f"classification:")
