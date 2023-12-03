@@ -10,7 +10,7 @@ def compute_battery_health(present_capacity,rated_capacity):
     if soh_percentage>80:
        health_categories["healthy"]+=1
     elif soh_percentage>62:
-         health_categories["replace"]+=1
+        health_categories["replace"]+=1
     else:
           health_categories["failed"]+=1
   #create and return the health report
