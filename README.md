@@ -1,20 +1,20 @@
 def compute_battery_health(present_capacity, rated_capacity):
-    health_categories = {
+     health_categories = {
       "Healthy": 0,
       "Replace": 0,
       "Failed": 0,
   }
 
   # Calculate SoH percentage
-   soh_percentage = 100 * present_capacity / rated_capacity
+    soh_percentage = 100 * present_capacity / rated_capacity
 
   # Classify battery based on SoH
-   if soh_percentage > 80:
-      health_categories["Healthy"] += 1
-   elif soh_percentage > 62:
-       health_categories["Replace"] += 1
-   else:
-       health_categories["Failed"] += 1
+    if soh_percentage > 80:
+       health_categories["Healthy"] += 1
+    elif soh_percentage > 62:
+        health_categories["Replace"] += 1
+    else:
+        health_categories["Failed"] += 1
 
   # Create and return the health report
   health_report = {
