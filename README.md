@@ -1,5 +1,5 @@
 def compute_battery_health(present_capacity, rated_capacity):
-     health_categories = {
+    health_categories = {
       "Healthy": 0,
       "Replace": 0,
       "Failed": 0,
@@ -17,7 +17,7 @@ def compute_battery_health(present_capacity, rated_capacity):
         health_categories["Failed"] += 1
 
   # Create and return the health report
-  health_report = {
+    health_report = {
       "SoH percentage": soh_percentage,
       "Classification": health_categories,
   }
