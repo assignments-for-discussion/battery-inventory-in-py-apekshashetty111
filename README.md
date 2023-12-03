@@ -27,9 +27,9 @@ battery_data=[
     {"present_capacity":50,"rated_capacity":120},
     ]
 for battery in battery_data:
-        health_report=compute_battery_health(battery["present_capacity"],battery["rated_capacity"])
-        print(f"\nBattery soh:{health_report['soh percentage']:2f}%")
-        print(f"classification:")
-        for category,count in health_report["classsification"].items():
-            print(f"\t{category}:{count}")
+    health_report=compute_battery_health(battery["present_capacity"],battery["rated_capacity"])
+    print(f"\nBattery soh:{health_report['soh percentage']:2f}%")
+    print(f"classification:")
+    for category,count in health_report["classsification"].items():
+        print(f"\t{category}:{count}")
     
